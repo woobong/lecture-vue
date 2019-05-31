@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js APP</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+<div id="app">
+    <h1>Chapter3</h1>
+    <button @click="handleClick($event, item)">클릭</button>
+    <span>{{count}}</span>
+    <button @click="count++">+</button>
+    <button @click="count--">-</button>
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/vue"></script>
+<script type="module" src="./js/chapter3.js"></script>
+</body>
+</html>
