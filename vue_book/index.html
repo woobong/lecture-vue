@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js APP</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+<div id="app">
+    <h1 ref="hello">{{ message }}</h1>
+    <p>{{state.count}}</p>
+    <button v-on:click="show=!show">변경하기</button>
+    <transition>
+        <p v-if="show">Hello Vue.js</p>
+    </transition>
+
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <circle cx="100" cy="75" v-bind:r="radius" fill="lightpink" />
+    </svg>
+    <input type="range" min="0" max="100" v-model="radius" />
+    <hr/>
+    이름 : <input v-model="name"> <button v-on:click="doAdd">몬스터 추가하기</button>
+    <ul>
+        <li v-for="(monster, index) in monster_list" v-bind:key="monster.id">
+            ID.{{monster.id}} {{monster.name}} {{monster.hp}}
+            <span v-if="monster.hp < 50">빈사 상태!</span>
+            <button v-on:click="doRemove(index)">몬스터 제거하기</button>
+            <button v-on:click="doAttack(index)">공격하기</button>
+        </li>
+    </ul>
+
+    <ul>
+        <li v-for="monster in monster_list" v-bind:key="monster.id" v-bind:class="{strong:monster.hp > 300}" v-if="monster.hp > 200">
+            ID.{{monster.id}} {{monster.name}} {{monster.hp}}
+            <span v-if="monster.hp > 300"> 강하다!</span>
+        </li>
+    </ul>
+
+<!--    <span v-for="item in 15">{{item}}</span><br/>-->
+<!--    <span v-for="item in [1,5,10,15]">{{item}}</span>-->
+<!--    <p v-for="item in text">{{item}}</p>-->
+
+    <a v-bind:href="url" v-pre>
+        Hello {{ message }}
+    </a><br/>
+    <a v-bind:href="url" v-once>
+        Hello {{ message }}
+    </a><br/>
+    <span v-text="message"></span><br/>
+    <span v-html="html_message"></span>
+
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/vue"></script>
+<script type="module" src="./js/app.js"></script>
+</body>
+</html>
