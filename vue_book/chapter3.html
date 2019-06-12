@@ -14,6 +14,36 @@
     <span>{{count}}</span>
     <button @click="count++">+</button>
     <button @click="count--">-</button>
+    <br/>
+
+    <img src="http://img.tf.co.kr/article/home/2016/01/20/201644481453275552.gif" v-on:load="show=true"
+         v-bind:class="{hide:!show}"/>
+    <br/>
+    <input v-bind:value="message" v-on:input="handleInput"/>
+    <p>{{message}}</p>
+
+    <br/>
+    <p>이벤트 장식자 : prevent => event.preventDefault()를 호출 한다.</p>
+    <div v-on:click.right="handler">right click example</div>
+    <div v-on:click.right.prevent="handler">right click(prevent) example</div>
+
+    <br/>
+    <p>이벤트 장식자 : stop => 이벤트 버블링을 막는다. (div2 stop이 없으면 div1,div2 클릭 이벤트가 모두 일어난다. 하위가 먼저임)</p>
+    <p>이벤트 장식자 : capture => 이벤트를 캡처 모드로 발생 루트->이벤트 타겟 요소까지 찾아가는 캡처를 할 때에 이벤트 발생 / 따라서 버블링 모드보다 우선순위가 높음</p>
+    <div v-on:click.capture="handler('div2')">
+        <div v-on:click="handler('div1')">
+            div1
+            <div v-on:click.stop="handler('div2')">div2</div>
+        </div>
+    </div>
+
+    <p>이벤트 장식자 : native => $emit로 직접 호출해야만 이벤트 발생하도록 한다. </p>
+    <div v-on:click.native="handler">div native</div>
+    <div v-on:click="handler">div native x</div>
+
+    <p>키 장식자 : 특정 키 코드 입력만 핸들러를 호출하게 만들어줍니다.</p>
+    <input v-on:keydown.13="handler">
+    <input v-on:keydown.enter="handler">
 </div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://unpkg.com/vue"></script>

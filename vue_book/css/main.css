@@ -11,9 +11,20 @@
         opacity: 0;
     }
 }
+
 #app {
     animation: cloak-in 2s;
 }
+
 #app[v-cloak] {
+    opacity: 0;
+}
+
+img {
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+img.hide {
     opacity: 0;
 }

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js APP</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@12.1.5"></script>
+<div id="app">
+    <h1>Chapter4</h1>
+
+    <textarea v-model="msg"></textarea>
+    <pre>{{ msg }}</pre>
+
+    <label>
+        <input type="checkbox" v-model="val" true-value="yes" false-value="no"> {{val}}
+    </label>
+    <br/>
+    <input type="checkbox" v-model="val2" value="A">
+    <input type="checkbox" v-model="val2" value="B">
+    <input type="checkbox" v-model="val2" value="C">
+    <span>{{val2}}</span>
+    <br/>
+    <input type="radio" v-model="radio1" value="A">
+    <input type="radio" v-model="radio1" value="B">
+    <input type="radio" v-model="radio1" value="C">
+    <span>{{radio1}}</span>
+    <br/>
+    <select v-model="sel1">
+        <option disabled="disabled">선택해주세요.</option>
+        <option value="a">A</option>
+        <option value="b">B</option>
+        <option value="c">C</option>
+    </select>
+    <span>{{sel1}}</span>
+    <br/><br/>
+    <select v-model="sel2" multiple>
+        <option disabled="disabled">선택해주세요.</option>
+        <option value="a">A</option>
+        <option value="b">B</option>
+        <option value="c">C</option>
+    </select>
+    <span>{{sel2}}</span>
+    <br/>
+    <p>파일 타입에는 v-model 디렉티브를 사용할 수 없습니다. change 이벤트를 바인딩해서 사용합니다.</p>
+    <input type="file" v-on:change="handleChange"/>
+    <div v-if="preview"><img v-bind:src="preview"></div>
+    <br/>
+    <p>다른입력 타입</p>
+    <input type="range" v-model.number="range1"> {{ range1 }}
+
+    <p>v-model 장식자</p>
+    <ul>
+        <li>.lazy : input 대신 change 이벤트 핸들링하기</li>
+        <li>.number : 값을 숫자로 변환하기</li>
+        <li>.trim : 양쪽에 쓸데없는 공백 제거하기</li>
+    </ul>
+
+    <input type="text" v-model.lazy="lazy1"/> {{ lazy1 }}
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <header v-bind:class="{ compact: scrollY > 200 }">
+        200px 이상 스크롤했으면, .compact 클래스 추가하기
+    </header>
+    <div v-on:click="scrollTop">페이지 상단으로 이동하기</div>
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/vue"></script>
+<script type="module" src="js/chapter3_input.js"></script>
+</body>
+</html>

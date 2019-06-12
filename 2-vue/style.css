@@ -105,3 +105,11 @@ form {
     width: 30%;
     height: 30%;
 }
+
+img {
+    opacity: 1;
+    transition: opacity 1s;
+}
+img.hide {
+    opacity: 0;
+}
