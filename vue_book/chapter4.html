@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js APP</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+<div id="app">
+    <p>{{ width }} 의 절반 값은 {{ halfWidth }} 입니다.</p>
+    <input v-model.number="width" />
+    <input v-model.number="halfWidth" />
+
+    <p>{{ height }} 의 절반 값은 {{ halfHeight }} 입니다.</p>
+    <p>X: {{ halfPoint.x}}</p>
+    <p>Y: {{ halfPoint.y}}</p>
+
+    <p>산출 속성은 리액티브 데이터를 기반으로 결과를 캐시한다.</p>
+    <p>{{ computedData }}</p>
+    <p>{{ computedData }}</p>
+    <p>{{ methodsData() }}</p>
+    <p>{{ methodsData() }}</p>
+    <hr>
+    <input v-model.number="budget">원 이하 필터링하기
+    <input v-model.number="limit">개의 결과 출력하기
+    <p>{{list.length }}개중 금액 필터링 : {{ matched.length }} 개 노출 필터링 : {{ limited.length }} 개를 출력하고 있습니다.</p>
+    <ul>
+        <li v-for="item in sorted" v-bind:key="item.id">
+            {{item.name}} {{item.price}}원
+        </li>
+    </ul>
+    <ul>
+        <li v-for="item in filteredList" v-bind:key="item.id">
+            {{item.name}} {{item.price}}원
+        </li>
+    </ul>
+    <button v-on:click="order=!order" true-value="yes" false-value="no">정렬하기</button>
+
+    <h2>Github API</h2>
+    <select v-model="current">
+        <option v-for="topic in topics" v-bind:value="topic.value">
+            {{ topic.name }}
+        </option>
+    </select>
+    <div v-for="item in list2">{{ item.full_name}}</div>
+    <h2>필터</h2>
+    {{ price | localeNum }}원
+    {{ price | globalLocaleNum }}원
+    {{ price | divideWon(1000) }}원
+    {{ price | divideWon(10000) }}원
+
+    <p>180 도는 {{ 180 | radian }} / {{ 180 | radian | round }} 라디안 입니다.</p>
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+<script src="https://unpkg.com/vue"></script>
+<script type="module" src="./js/chapter4.js"></script>
+</body>
+</html>
