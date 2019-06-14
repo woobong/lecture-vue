@@ -52,6 +52,11 @@
     {{ price | divideWon(10000) }}원
 
     <p>180 도는 {{ 180 | radian }} / {{ 180 | radian | round }} 라디안 입니다.</p>
+
+    <button v-on:click="list3.push(list3.length+1)">추가</button>
+    <ul ref="list3">
+        <li v-for="item in list3">{{item}}</li>
+    </ul>
 </div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>

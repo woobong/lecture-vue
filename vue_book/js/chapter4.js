@@ -30,14 +30,14 @@ let app = new Vue({
             {value: 'vue', name: 'Vue.js'},
             {value: 'jQuery', name: 'jQuery'},
         ],
-        price: 19800
+        price: 19800,
+        list3: []
     },
     filters: {
         localeNum: function (val) {
             return val.toLocaleString()
         },
-        divideWon: function(val, num) {
-            console.log(val, num)
+        divideWon: function (val, num) {
             if (num === 1000) {
                 return val / num + "천"
             }
@@ -45,10 +45,10 @@ let app = new Vue({
                 return val / num + "만"
             }
         },
-        round: function(val) {
+        round: function (val) {
             return Math.round(val * 100) / 100
         },
-        radian: function(val) {
+        radian: function (val) {
             return val * Math.PI / 180
         }
     },
@@ -93,7 +93,7 @@ let app = new Vue({
     watch: {
         list: {
             handler: function (newVal, oldVal) {
-                console.log(newVal, oldVal)
+                // console.log(newVal, oldVal)
             },
             deep: true,
             immediate: true
@@ -102,9 +102,15 @@ let app = new Vue({
             axios.get('https://api.github.com/search/repositories', {
                 params: {q: 'topic: ' + val}
             }).then(function (response) {
-                console.log(response)
+                // console.log(response)
                 this.list2 = response.data.items
             }.bind(this))
+        },
+        list3: function () {
+            console.log('기본 출력:', this.$refs.list3.offsetHeight)
+            this.$nextTick(function () {
+                console.log('nextTick:', this.$refs.list3.offsetHeight)
+            })
         }
     },
     methods: {
